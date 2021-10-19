@@ -12,14 +12,12 @@ function App() {
   return (
     <React.Fragment>
       <Header></Header>
-
       <ConnectedRouter history={history}>
         <Switch>
           <Route path="/" exact component={Browse}></Route>
           {/* <Route path="/movies" exact component={Movies}></Route> */}
         </Switch>
       </ConnectedRouter>
-
       <Footer></Footer>
     </React.Fragment>
   );
