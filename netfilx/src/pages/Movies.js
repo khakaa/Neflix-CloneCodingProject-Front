@@ -16,8 +16,8 @@ const Movies = () => {
   return (
     <div>
       <GenreNav>
-        <div>영화</div>
-        <div>토글</div>
+        <Text>영화</Text>
+        <Text>토글</Text>
       </GenreNav>
       <div>
         <Row showModal={showModal} visible={visible} closeModal={closeModal} />
@@ -31,6 +31,14 @@ const Movies = () => {
 
 const GenreNav = styled.div`
   padding-top: 100px;
+  display: flex;
+`;
+
+const Text = styled.div`
+  color: white;
+  font-size: 36px;
+  font-weight: 800;
+  margin-right: 20px;
 `;
 
 export default Movies;
