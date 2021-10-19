@@ -3,7 +3,25 @@ import styled from "styled-components";
 import Modal from "./Modal";
 
 const ContentThumbnail = (props) => {
-  const { showModal } = props;
+  const [visible, setVisible] = React.useState(false); // 모달의 상태 변경
+
+  React.useEffect(() => {
+    if (visible === true) {
+      document.body.style.overflow = "hidden";
+    }
+
+    return function cleanup() {
+      document.body.style.overflow = "unset";
+    };
+  });
+
+  const showModal = () => {
+    setVisible(true);
+  };
+
+  const closeModal = () => {
+    setVisible(false);
+  };
 
   return (
     <>
@@ -12,6 +30,7 @@ const ContentThumbnail = (props) => {
         <ThumbnailImg src="https://occ-0-993-325.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABSF78muRZ4z-sgV4tQp8vM1VSE2SnlLYl_ThhQXzxbWPz-008QtjCtSCnoGduPscCSIvEETZ8ovDKC3wzDI-6XcwI-Q.webp?r=916" />
         <ThumbnailImg src="https://occ-0-993-325.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABSF78muRZ4z-sgV4tQp8vM1VSE2SnlLYl_ThhQXzxbWPz-008QtjCtSCnoGduPscCSIvEETZ8ovDKC3wzDI-6XcwI-Q.webp?r=916" />
       </Container>
+      <Modal visible={visible} closeModal={closeModal} />
     </>
   );
 };
@@ -22,12 +41,14 @@ const Container = styled.div`
 `;
 
 const ThumbnailImg = styled.img`
-  padding: 2px;
   border-radius: 0.4rem;
+  width: 25%;
+  max-width: 250px;
   transition: transform 200ms ease-in-out;
   width: 25%;
   max-width: 250px;
   }
+
 
   :hover {
     cursor: pointer;

@@ -1,21 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-import ContentThumbnail from "../components/ContentThumbnail";
-import Modal from "../components/Modal";
 import Row from "../components/Row";
 import banner from "../shared/img/netflix-banner.jpeg";
 
 const Browse = (props) => {
-  const [visible, setVisible] = React.useState(false); // 모달의 상태 변경
-
-  const showModal = () => {
-    setVisible(true);
-  };
-
-  const closeModal = () => {
-    setVisible(false);
-  };
   return (
     <React.Fragment>
       <Wrap>
@@ -27,7 +16,9 @@ const Browse = (props) => {
         </BannerImg>
 
         <Grid>
-          <Row
+          <Row />
+
+          {/* <Row
             showModal={showModal}
             visible={visible}
             closeModal={closeModal}
@@ -41,12 +32,7 @@ const Browse = (props) => {
             showModal={showModal}
             visible={visible}
             closeModal={closeModal}
-          />
-          <Row
-            showModal={showModal}
-            visible={visible}
-            closeModal={closeModal}
-          />
+          /> */}
         </Grid>
       </Wrap>
     </React.Fragment>
@@ -62,6 +48,7 @@ const Grid = styled.div`
   height: auto;
   background-color: black;
   overflow-y: auto;
+  margin: 3vw 0;
 `;
 
 const BtnWrap = styled.div`
