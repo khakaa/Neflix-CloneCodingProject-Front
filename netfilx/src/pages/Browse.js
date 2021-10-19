@@ -48,7 +48,7 @@ const Grid = styled.div`
   height: auto;
   background-color: black;
   overflow-y: auto;
-  margin: 3vw 0;
+  margin: 3vw 3vw;
 `;
 
 const BtnWrap = styled.div`
