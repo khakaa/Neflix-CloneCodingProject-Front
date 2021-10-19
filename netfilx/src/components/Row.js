@@ -7,12 +7,18 @@ const Row = (props) => {
 
   return (
     <React.Fragment>
-      {/* <RowContainer> */}
-      <STText>{sectionTitle}</STText>
-      <ImgWrap>
-        <ContentThumbnail></ContentThumbnail>
-      </ImgWrap>
-      {/* </RowContainer> */}
+      <RowContainer>
+        <STText>{sectionTitle}</STText>
+        <ImgWrap>
+          <ContentThumbnail></ContentThumbnail>
+          <ContentThumbnail></ContentThumbnail>
+          <ContentThumbnail></ContentThumbnail>
+          <ContentThumbnail></ContentThumbnail>
+          <ContentThumbnail></ContentThumbnail>
+          <ContentThumbnail></ContentThumbnail>
+          <ContentThumbnail></ContentThumbnail>
+        </ImgWrap>
+      </RowContainer>
     </React.Fragment>
   );
 };
@@ -35,11 +41,15 @@ const STText = styled.span`
 `;
 
 const ImgWrap = styled.div`
+  width: 100%;
   display: flex;
-  overflow-y: hidden;
-  scroll-behavior: smooth;
+
   padding: 1.2vmin 0 1.2vmin 0;
   margin: 0 0 3vmin 0;
+  overflow-x: scroll;
+  overflow-y: none;
+  overflow: auto;
+  scroll-behavior: smooth;
 
   ::-webkit-scrollbar {
     height: 5px;
@@ -56,9 +66,9 @@ const ImgWrap = styled.div`
   }
 `;
 
-// const RowContainer = styled.div`
-//   margin: 3vw 0;
-// `;
+const RowContainer = styled.div`
+  padding: 0 0 0 4%;
+`;
 
 // const Card = styled.div`
 //   height: 124px;

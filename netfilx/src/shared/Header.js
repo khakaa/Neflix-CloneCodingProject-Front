@@ -44,7 +44,7 @@ const HeaderWrap = styled.div`
   width: 100%;
   background-color: black;
   position: fixed;
-  z-index: 99999;
+  z-index: 10;
   padding: 10px;
   display: flex;
   flex-direction: row;
@@ -79,6 +79,10 @@ const Text = styled.div`
   color: #ffffff;
   font-size: 14px;
   margin: 0px 12px;
+
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const IMG = styled.img`

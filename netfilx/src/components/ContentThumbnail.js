@@ -25,10 +25,11 @@ const ContentThumbnail = (props) => {
 
   return (
     <>
-      <Container onClick={showModal}>
-        <ThumbnailImg src="https://occ-0-993-325.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABSF78muRZ4z-sgV4tQp8vM1VSE2SnlLYl_ThhQXzxbWPz-008QtjCtSCnoGduPscCSIvEETZ8ovDKC3wzDI-6XcwI-Q.webp?r=916" />
-        <ThumbnailImg src="https://occ-0-993-325.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABSF78muRZ4z-sgV4tQp8vM1VSE2SnlLYl_ThhQXzxbWPz-008QtjCtSCnoGduPscCSIvEETZ8ovDKC3wzDI-6XcwI-Q.webp?r=916" />
-        <ThumbnailImg src="https://occ-0-993-325.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABSF78muRZ4z-sgV4tQp8vM1VSE2SnlLYl_ThhQXzxbWPz-008QtjCtSCnoGduPscCSIvEETZ8ovDKC3wzDI-6XcwI-Q.webp?r=916" />
+      <Container>
+        <ThumbnailImg
+          onClick={showModal}
+          src="https://occ-0-993-325.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABSF78muRZ4z-sgV4tQp8vM1VSE2SnlLYl_ThhQXzxbWPz-008QtjCtSCnoGduPscCSIvEETZ8ovDKC3wzDI-6XcwI-Q.webp?r=916"
+        />
       </Container>
       <Modal visible={visible} closeModal={closeModal} />
     </>
@@ -37,18 +38,14 @@ const ContentThumbnail = (props) => {
 
 const Container = styled.div`
   height: 100%;
-  width: 100%;
+  min-width: 350px;
 `;
 
 const ThumbnailImg = styled.img`
+  padding: 0px 2px;
   border-radius: 0.4rem;
-  width: 25%;
-  max-width: 250px;
+  /* width: 25%; */
   transition: transform 200ms ease-in-out;
-  width: 25%;
-  max-width: 250px;
-  }
-
 
   :hover {
     cursor: pointer;
