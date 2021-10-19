@@ -63,7 +63,7 @@ const ModalOverlay = styled.div`
 
 const ModalContainer = styled.div`
   position: fixed;
-  top: 50%;
+  top: 60%;
   left: 50%;
   width: 90vw;
   max-width: 800px;
