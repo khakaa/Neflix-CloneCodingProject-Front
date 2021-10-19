@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Poster from "../shared/img/poster.jpeg";
+import MovieCard from "./MovieCard";
 const Row = (props) => {
   const { sectionTitle, fetchUrl, fetchUrlTMDB, Poster } = props;
 
@@ -8,14 +8,7 @@ const Row = (props) => {
     <React.Fragment>
       <STText>{sectionTitle}</STText>
       <ImgWrap>
-        <Card>네모</Card>
-        <Card>네모</Card>
-        <Card>네모</Card>
-        <Card>네모</Card>
-        <Card>네모</Card>
-        <Card>네모</Card>
-        <Card>네모</Card>
-        <Card>네모</Card>
+        <MovieCard>네모</MovieCard>
       </ImgWrap>
     </React.Fragment>
   );
@@ -64,7 +57,6 @@ const Card = styled.div`
   height: 124px;
   min-width: 220px;
   background-color: white;
-  border: 1px solid black;
 `;
 
 export default Row;
