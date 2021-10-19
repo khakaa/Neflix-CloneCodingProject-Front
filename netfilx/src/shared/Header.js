@@ -25,7 +25,13 @@ export const Header = () => {
             홈
           </Text>
           <Text>TV프로그램</Text>
-          <Text>영화</Text>
+          <Text
+            onClick={() => {
+              history.push("/movies");
+            }}
+          >
+            영화
+          </Text>
           <Text>NEW! 요즘 대세 콘텐츠</Text>
         </TextGrid>
       </Wrap>

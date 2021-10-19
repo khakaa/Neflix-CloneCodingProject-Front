@@ -1,22 +1,26 @@
 import React from "react";
 import styled from "styled-components";
-import Poster from "../shared/img/poster.jpeg";
+
+import Modal from "./Modal";
+import ContentThumbnail from "./ContentThumbnail";
 const Row = (props) => {
-  const { sectionTitle, fetchUrl, fetchUrlTMDB, Poster } = props;
+  const {
+    sectionTitle,
+    fetchUrl,
+    fetchUrlTMDB,
+    Poster,
+    showModal,
+    closeModal,
+    visible,
+  } = props;
 
   return (
     <React.Fragment>
       <STText>{sectionTitle}</STText>
       <ImgWrap>
-        <Card>네모</Card>
-        <Card>네모</Card>
-        <Card>네모</Card>
-        <Card>네모</Card>
-        <Card>네모</Card>
-        <Card>네모</Card>
-        <Card>네모</Card>
-        <Card>네모</Card>
+        <ContentThumbnail showModal={showModal}></ContentThumbnail>
       </ImgWrap>
+      <Modal visible={visible} closeModal={closeModal} />
     </React.Fragment>
   );
 };
@@ -64,7 +68,6 @@ const Card = styled.div`
   height: 124px;
   min-width: 220px;
   background-color: white;
-  border: 1px solid black;
 `;
 
 export default Row;

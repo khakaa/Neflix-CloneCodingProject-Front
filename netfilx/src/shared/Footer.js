@@ -8,16 +8,16 @@ const Footer = () => {
       <Wrap>
         <SocialLinks>
           <a href="https://www.facebook.com/NetflixKR">
-            <ImFacebook2 cursor="pointer" size="1.7em" color="grey" />
+            {/* <ImFacebook2 cursor="pointer" size="1.7em" color="grey" /> */}
           </a>
           <a href="https://www.instagram.com/netflixkr/">
-            <ImInstagram cursor="pointer" size="26" color="grey" />
+            {/* <ImInstagram cursor="pointer" size="26" color="grey" /> */}
           </a>
           <a href="https://www.twitter.com/NetflixKR">
-            <ImTwitter cursor="pointer" size="26" color="grey" />
+            {/* <ImTwitter cursor="pointer" size="26" color="grey" /> */}
           </a>
           <a href="https://www.youtube.com/NetflixKR">
-            <ImYoutube cursor="pointer" size="26" color="grey" />
+            {/* <ImYoutube cursor="pointer" size="26" color="grey" /> */}
           </a>
         </SocialLinks>
         <FooterBtnList>
