@@ -1,26 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 
-import Modal from "./Modal";
 import ContentThumbnail from "./ContentThumbnail";
 const Row = (props) => {
-  const {
-    sectionTitle,
-    fetchUrl,
-    fetchUrlTMDB,
-    Poster,
-    showModal,
-    closeModal,
-    visible,
-  } = props;
+  const { sectionTitle, fetchUrl, fetchUrlTMDB, Poster } = props;
 
   return (
     <React.Fragment>
+      {/* <RowContainer> */}
       <STText>{sectionTitle}</STText>
       <ImgWrap>
-        <ContentThumbnail showModal={showModal}></ContentThumbnail>
+        <ContentThumbnail></ContentThumbnail>
       </ImgWrap>
-      <Modal visible={visible} closeModal={closeModal} />
+      {/* </RowContainer> */}
     </React.Fragment>
   );
 };
@@ -64,10 +56,14 @@ const ImgWrap = styled.div`
   }
 `;
 
-const Card = styled.div`
-  height: 124px;
-  min-width: 220px;
-  background-color: white;
-`;
+// const RowContainer = styled.div`
+//   margin: 3vw 0;
+// `;
+
+// const Card = styled.div`
+//   height: 124px;
+//   min-width: 220px;
+//   background-color: white;
+// `;
 
 export default Row;

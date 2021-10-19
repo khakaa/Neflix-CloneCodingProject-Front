@@ -38,6 +38,14 @@ const Modal = (props) => {
                   <GrayText>제작 : </GrayText>
                   00
                 </Text>
+                <Text>
+                  <GrayText>제작 : </GrayText>
+                  00
+                </Text>
+                <Text>
+                  <GrayText>제작 : </GrayText>
+                  00
+                </Text>
               </TextGrid>
               <CloseButton onClick={closeModal}>x</CloseButton>
             </ModalDetail>
@@ -49,11 +57,9 @@ const Modal = (props) => {
 };
 
 const ModalOverlay = styled.div`
-  /* padding: 500px; */
   width: 100%;
-  height: 100%;
-  position: absolute;
-  opacity: 0.5;
+  position: fixed;
+  opacity: 0.8;
   top: 0;
   left: 0;
   bottom: 0;
@@ -62,12 +68,16 @@ const ModalOverlay = styled.div`
 `;
 
 const ModalContainer = styled.div`
+  border-radius: 0.4rem;
+  height: 80%;
+  overflow-y: scroll;
   position: fixed;
-  top: 60%;
+  top: 50%;
+  bottom: 50%;
   left: 50%;
   width: 90vw;
   max-width: 800px;
-  z-index: 30;
+  z-index: 100000;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
@@ -147,8 +157,8 @@ const GrayText = styled.span`
 const CloseButton = styled.button`
   cursor: pointer;
   position: absolute;
-  top: 0.5em;
-  right: 0.5em;
+  top: 1em;
+  right: 1em;
   font-size: 20px;
   padding: 8px;
   width: 36px;
