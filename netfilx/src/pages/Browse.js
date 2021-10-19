@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import MovieCard from "../components/MovieCard";
 import Row from "../components/Row";
 import banner from "../shared/img/netflix-banner.jpeg";
 
