@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
+import { actionCreators as cardCreators } from "../redux/modules/browse";
 
-import Row from "../components/Row";
+import BrowseRow from "../components/BrowseRow";
 import banner from "../shared/img/netflix-banner.jpeg";
 
 const Browse = (props) => {
+  const dispatch = useDispatch();
+  const { history } = props;
+  // const card_list = useSelector((state) => state);
+  // console.log(card_list);
+
   return (
     <React.Fragment>
       <Wrap>
@@ -16,7 +23,7 @@ const Browse = (props) => {
         </BannerImg>
 
         <Grid>
-          <Row />
+          <BrowseRow />
 
           {/* <Row
             showModal={showModal}
