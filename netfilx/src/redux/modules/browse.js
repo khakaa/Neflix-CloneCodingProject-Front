@@ -249,11 +249,11 @@ const initialState = {
 const setMovieDB = () => {
   return function (dispatch, getState, { history }) {
     apis
-      .getCard()
+      .getMainMovie()
       .then((res) => {
         console.log(res);
-        console.log(res.data.newArray);
-        dispatch(setMovie(res.data.newArray));
+        console.log(res.data.data.datainfo);
+        dispatch(setMovie(res.data.data.datainfo));
       })
       .catch((err) => {
         //요청이 정상적으로 안됬을때 수행
@@ -271,8 +271,8 @@ export default handleActions(
       produce(state, (draft) => {
         // undifined는 값이 잘넘어가고있다. 값이 나올경우 어딘가에 문제가 있는것
 
-        console.log(action.payload.post_list);
-        draft.list = action.payload.post_list;
+        console.log(action.payload.moviecard_list);
+        draft.list = action.payload.moviecard_list;
         // 새 배열에서 푸시를 하게되면 데이터 중복으로 계속 불러와지게됨.
         // draft.list.push(...action.payload.post_list.postings);
 

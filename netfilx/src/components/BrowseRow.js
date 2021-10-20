@@ -11,6 +11,8 @@ const BrowseRow = (props) => {
   const large_category = useSelector(
     (state) => state.browse.data.largeCategory
   );
+  const state = useSelector((state) => state.browse);
+  console.log(state);
   const moviecard_row = useSelector((state) => state.browse.data.datainfo);
   console.log(large_category);
   console.log(moviecard_row);
