@@ -111,8 +111,4 @@ const BannerImg = styled.div`
   background-color: black;
 `;
 
-/* const Row = styled.div`
-  margin: 2rem;
-`; */
-
 export default Browse;

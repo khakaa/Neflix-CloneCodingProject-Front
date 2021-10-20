@@ -1,8 +1,8 @@
 import React from "react";
 import Row from "../components/Row";
-import Modal from "../components/Modal";
 import styled from "styled-components";
 import { useState } from "react";
+import { request } from "../shared/request";
 
 const Movies = () => {
   const [visible, setVisible] = React.useState(false); // 모달의 상태 변경
@@ -16,11 +16,8 @@ const Movies = () => {
     setVisible(true);
   };
 
-  const closeModal = () => {
-    setVisible(false);
-  };
   return (
-    <div>
+    <>
       <GenreNav>
         <Text>영화</Text>
 
@@ -36,13 +33,13 @@ const Movies = () => {
           Selected: <b>{Selected}</b>
         </p>
       </GenreNav>
-      <div>
-        <Row showModal={showModal} visible={visible} closeModal={closeModal} />
-        <Row showModal={showModal} visible={visible} closeModal={closeModal} />
-        <Row showModal={showModal} visible={visible} closeModal={closeModal} />
-        <Row showModal={showModal} visible={visible} closeModal={closeModal} />
-      </div>
-    </div>
+
+      <Grid>
+        {request.map((req) => {
+          return <Row title={req.title} url={req.url} />;
+        })}
+      </Grid>
+    </>
   );
 };
 
@@ -59,6 +56,7 @@ const Text = styled.div`
   font-weight: 800;
   margin-right: 20px;
 `;
+
 const Select = styled.select`
   width: 90px;
   height: 27px;
@@ -68,4 +66,13 @@ const Select = styled.select`
   font-weight: 700;
   padding: 2px 2px 0px 2px;
 `;
+
+const Grid = styled.div`
+  width: auto;
+  height: auto;
+  background-color: black;
+  overflow-y: auto;
+  margin: 3vw 0;
+`;
+
 export default Movies;

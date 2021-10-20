@@ -1,8 +1,6 @@
 import React from "react";
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
-import "moment";
-import moment from "moment";
 import { apis } from "../../lib/api";
 // import getToken from "../../shared/Token";
 
