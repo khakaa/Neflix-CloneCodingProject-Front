@@ -2,16 +2,23 @@ import React from "react";
 import styled from "styled-components";
 
 const Modal = (props) => {
-  const { visible, closeModal } = props;
-  const overview =
-    "내 이름은 알렉스. 아이 아빠의 정신적 학대를 피해 딸을 데리고 도망쳤다. 이제 나는 여자이자 엄마로서 세상에 정착해 홀로 육아를 하고 미래를 준비해야 한다. 궂은일을 해서라도 반드시.";
+  const {
+    visible,
+    closeModal,
+    posterPath,
+    overview,
+    firstData,
+    grade,
+    youtubePath,
+  } = props;
+
   return (
     <>
       {visible ? (
         <>
           <ModalOverlay onClick={closeModal} />
           <ModalContainer onClick={(e) => e.stopPropagation()}>
-            <Img src="https://occ-0-993-325.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABSF78muRZ4z-sgV4tQp8vM1VSE2SnlLYl_ThhQXzxbWPz-008QtjCtSCnoGduPscCSIvEETZ8ovDKC3wzDI-6XcwI-Q.webp?r=916"></Img>
+            <Img src={posterPath}></Img>
             <ModalDetail>
               <LinkContainer>
                 <PageLink>공식 홈페이지</PageLink>
@@ -27,20 +34,12 @@ const Modal = (props) => {
                 </Text>
                 <Text>
                   <GrayText>개봉일 :</GrayText>
-                  2021.00.00
+                  {firstData}
                 </Text>
 
                 <Text>
                   <GrayText>평점 : </GrayText>
-                  00
-                </Text>
-                <Text>
-                  <GrayText>제작 : </GrayText>
-                  00
-                </Text>
-                <Text>
-                  <GrayText>제작 : </GrayText>
-                  00
+                  {grade}
                 </Text>
                 <Text>
                   <GrayText>제작 : </GrayText>
