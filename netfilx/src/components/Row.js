@@ -5,13 +5,14 @@ import ContentThumbnail from "./ContentThumbnail";
 import { apis } from "../lib/apis";
 
 const Row = (props) => {
-  const { Poster, title, url } = props;
+  const { title, url } = props;
 
   const [movies, setMovies] = React.useState([]);
 
   React.useEffect(() => {
     async function fetchData() {
       const res = await apis.getCategoryMovie(url);
+      console.log(res.data.dataList);
       setMovies(res.data.dataList);
     }
 
@@ -39,10 +40,6 @@ const Row = (props) => {
     </React.Fragment>
   );
 };
-
-// Row.defaultProps = {
-//   sectionTitle: "Genre",
-// };
 
 const STText = styled.span`
   background-color: black;
