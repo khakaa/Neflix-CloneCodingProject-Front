@@ -3,6 +3,8 @@ import styled from "styled-components";
 import Modal from "./Modal";
 
 const ContentThumbnail = (props) => {
+  const { overview, firstData, grade, posterPath, youtubePath } = props;
+
   const [visible, setVisible] = React.useState(false); // 모달의 상태 변경
 
   React.useEffect(() => {
@@ -23,17 +25,28 @@ const ContentThumbnail = (props) => {
     setVisible(false);
   };
 
-  return (
-    <>
-      <Container>
-        <ThumbnailImg
-          onClick={showModal}
-          src="https://occ-0-993-325.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABSF78muRZ4z-sgV4tQp8vM1VSE2SnlLYl_ThhQXzxbWPz-008QtjCtSCnoGduPscCSIvEETZ8ovDKC3wzDI-6XcwI-Q.webp?r=916"
+  if (youtubePath === null) {
+    return (
+      <>
+        <Container>
+          <ThumbnailImg
+            onClick={showModal}
+            src={posterPath}
+            // src="https://occ-0-993-325.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABSF78muRZ4z-sgV4tQp8vM1VSE2SnlLYl_ThhQXzxbWPz-008QtjCtSCnoGduPscCSIvEETZ8ovDKC3wzDI-6XcwI-Q.webp?r=916"
+          />
+        </Container>
+        <Modal
+          visible={visible}
+          closeModal={closeModal}
+          posterPath={posterPath}
+          overview={overview}
+          firstData={firstData}
+          grade={grade}
+          youtubePath={youtubePath}
         />
-      </Container>
-      <Modal visible={visible} closeModal={closeModal} />
-    </>
-  );
+      </>
+    );
+  }
 };
 
 const Container = styled.div`
