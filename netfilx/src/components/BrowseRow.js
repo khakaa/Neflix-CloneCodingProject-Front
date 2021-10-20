@@ -4,31 +4,39 @@ import { useSelector, useDispatch } from "react-redux";
 import { actionCreators as cardCreators } from "../redux/modules/browse";
 
 import ContentThumbnail from "./ContentThumbnail";
-const Row = (props) => {
+
+const BrowseRow = (props) => {
   const dispatch = useDispatch();
   const { history } = props;
-  const large_category = useSelector((state) => state.browse.largeCategory);
+  const large_category = useSelector(
+    (state) => state.browse.data.largeCategory
+  );
+  const moviecard_row = useSelector((state) => state.browse.data.datainfo);
   console.log(large_category);
+  console.log(moviecard_row);
+  useEffect(() => {
+    dispatch(cardCreators.setMovieDB());
+  }, []);
 
   return (
     <React.Fragment>
       <RowContainer>
-        <STText>{large_category}</STText>
-        <ImgWrap>
-          <ContentThumbnail></ContentThumbnail>
-          <ContentThumbnail></ContentThumbnail>
-          <ContentThumbnail></ContentThumbnail>
-          <ContentThumbnail></ContentThumbnail>
-          <ContentThumbnail></ContentThumbnail>
-          <ContentThumbnail></ContentThumbnail>
-          <ContentThumbnail></ContentThumbnail>
-        </ImgWrap>
+        {moviecard_row.map((p, idx) => {
+          return (
+            <>
+              <STText>{large_category}</STText>
+              <ImgWrap key={idx}>
+                <ContentThumbnail key={idx} {...p}></ContentThumbnail>
+              </ImgWrap>
+            </>
+          );
+        })}
       </RowContainer>
     </React.Fragment>
   );
 };
 
-Row.defaultProps = {
+BrowseRow.defaultProps = {
   sectionTitle: "Genre",
 };
 
@@ -81,4 +89,4 @@ const RowContainer = styled.div`
 //   background-color: white;
 // `;
 
-export default Row;
+export default BrowseRow;

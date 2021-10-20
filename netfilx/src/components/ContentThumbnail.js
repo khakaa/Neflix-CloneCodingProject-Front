@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
 import Modal from "./Modal";
 
 const ContentThumbnail = (props) => {
+  const poster = useSelector(
+    (state) => state.browse.data.datainfo[0].dataList[0].backdrop_path
+  );
+  console.log(poster);
   const [visible, setVisible] = React.useState(false); // 모달의 상태 변경
 
   React.useEffect(() => {
@@ -26,10 +31,7 @@ const ContentThumbnail = (props) => {
   return (
     <>
       <Container>
-        <ThumbnailImg
-          onClick={showModal}
-          src="https://occ-0-993-325.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABSF78muRZ4z-sgV4tQp8vM1VSE2SnlLYl_ThhQXzxbWPz-008QtjCtSCnoGduPscCSIvEETZ8ovDKC3wzDI-6XcwI-Q.webp?r=916"
-        />
+        <ThumbnailImg onClick={showModal} src={poster} />
       </Container>
       <Modal visible={visible} closeModal={closeModal} />
     </>
