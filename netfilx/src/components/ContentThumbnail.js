@@ -1,14 +1,22 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { useSelector, useDispatch } from "react-redux";
+// import { useSelector, useDispatch } from "react-redux";
 import Modal from "./Modal";
 
 const ContentThumbnail = (props) => {
-  const poster = useSelector(
-    (state) => state.browse.data.datainfo[0].dataList[0].backdrop_path
-  );
-  console.log(poster);
-  const { overview, firstData, grade, posterPath, youtubePath } = props;
+  // const poster = useSelector(
+  //   (state) => state.browse.data.datainfo[0].dataList[0].backdrop_path
+  // );
+  // console.log(poster);
+  const {
+    overview,
+    firstDate,
+    grade,
+    backDropPath,
+    posterPath,
+    youtubePath,
+    genre,
+  } = props;
 
   const [visible, setVisible] = React.useState(false); // 모달의 상태 변경
 
@@ -30,60 +38,57 @@ const ContentThumbnail = (props) => {
     setVisible(false);
   };
 
-  if (youtubePath === null) {
-    return (
-      <>
-        <Container>
-          <ThumbnailImg
-            onClick={showModal}
-            // src={posterPath}
-            src="https://occ-0-993-325.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABSF78muRZ4z-sgV4tQp8vM1VSE2SnlLYl_ThhQXzxbWPz-008QtjCtSCnoGduPscCSIvEETZ8ovDKC3wzDI-6XcwI-Q.webp?r=916"
-          />
-        </Container>
-        <Modal
-          visible={visible}
-          closeModal={closeModal}
-          posterPath={posterPath}
-          overview={overview}
-          firstData={firstData}
-          grade={grade}
-        />
-      </>
-    );
-  }
+  // if (youtubePath === null) {
+  return (
+    <>
+      <div>
+        <ThumbnailImg onClick={showModal} src={backDropPath} />
+      </div>
+      <Modal
+        visible={visible}
+        closeModal={closeModal}
+        posterPath={posterPath}
+        backDropPath={backDropPath}
+        overview={overview}
+        firstData={firstDate}
+        grade={grade}
+        genre={genre}
+      />
+    </>
+  );
+  // }
 
-  if (youtubePath) {
-    return (
-      <>
-        <Container>
-          <ThumbnailVideo
-            onClick={showModal}
-            // src={posterPath}
-            src="https://occ-0-993-325.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABSF78muRZ4z-sgV4tQp8vM1VSE2SnlLYl_ThhQXzxbWPz-008QtjCtSCnoGduPscCSIvEETZ8ovDKC3wzDI-6XcwI-Q.webp?r=916"
-          />
-        </Container>
-        <Modal
-          visible={visible}
-          closeModal={closeModal}
-          overview={overview}
-          firstData={firstData}
-          grade={grade}
-          youtubePath={youtubePath}
-        />
-      </>
-    );
-  }
+  // if (youtubePath) {
+  //   return (
+  //     <>
+  //       <Container>
+  //         <ThumbnailVideo
+  //           onClick={showModal}
+  //           src={youtubePath}
+  // src="https://occ-0-993-325.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABSF78muRZ4z-sgV4tQp8vM1VSE2SnlLYl_ThhQXzxbWPz-008QtjCtSCnoGduPscCSIvEETZ8ovDKC3wzDI-6XcwI-Q.webp?r=916"
+  //       />
+  //     </Container>
+  //     <Modal
+  //       visible={visible}
+  //       closeModal={closeModal}
+  //       overview={overview}
+  //       firstData={firstDate}
+  //       grade={grade}
+  //       youtubePath={youtubePath}
+  //     />
+  //   </>
+  // );
+  // }
 };
 
-const Container = styled.div`
-  height: 100%;
-  min-width: 350px;
-`;
-
 const ThumbnailImg = styled.img`
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  height: 100%;
+  width: 240px;
   padding: 0px 2px;
   border-radius: 0.4rem;
-  /* width: 25%; */
   transition: transform 200ms ease-in-out;
 
   :hover {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import ContentThumbnail from "./ContentThumbnail";
@@ -7,36 +7,50 @@ import { apis } from "../lib/apis";
 
 const Row = (props) => {
   const { title, url } = props;
-
-  const [movies, setMovies] = React.useState([]);
+  // console.log(props);
+  const [movies, setMovies] = useState([]);
 
   React.useEffect(() => {
     async function fetchData() {
       const res = await apis.getCategoryMovie(url);
-      console.log(res.data);
-      setMovies(res.data.dataList);
+      // console.log(res.data.data.datainfo[0].dataList);
+      // const movieArr = res.data.data.datainfo[0].dataList
+      //   ? res.data.data.datainfo[0].dataList
+      //   : "";
+
+      // const deduplicatedArr = movieArr.filter(())
+
+      setMovies(
+        res.data.data.datainfo[0].dataList
+          ? res.data.data.datainfo[0].dataList
+          : ""
+      );
     }
 
     fetchData();
   }, []);
 
+  console.log(movies);
+
   return (
     <React.Fragment>
       <RowContainer>
         <STText>{title}</STText>
-        {movies.map((m) => {
-          return (
-            <ImgWrap>
+        <ImgWrap>
+          {movies.map((m) => {
+            return (
               <ContentThumbnail
                 overview={m.overview}
-                firstDate={m.first_data}
+                firstDate={m.first_date}
                 grade={m.grade}
-                posterPath={m.posterPath}
+                backDropPath={m.backdrop_path}
+                posterPath={m.poster_Path}
                 youtubePath={m.youtubePath}
+                genre={m.genre}
               ></ContentThumbnail>
-            </ImgWrap>
-          );
-        })}
+            );
+          })}
+        </ImgWrap>
       </RowContainer>
     </React.Fragment>
   );

@@ -1,19 +1,17 @@
 import React from "react";
 import Row from "../components/Row";
 import styled from "styled-components";
+
 import { useState } from "react";
+
 import { request } from "../shared/request";
 
 const Movies = () => {
-  const [visible, setVisible] = React.useState(false); // 모달의 상태 변경
   const selectList = ["한국", "미국영화", "외국작품", "액션"];
   const [Selected, setSelected] = useState("");
 
   const handleSelect = (e) => {
     setSelected(e.target.value);
-  };
-  const showModal = () => {
-    setVisible(true);
   };
 
   return (
@@ -35,8 +33,8 @@ const Movies = () => {
       </GenreNav>
 
       <Grid>
-        {request.map((req) => {
-          return <Row title={req.title} url={req.url} />;
+        {request.map((r) => {
+          return <Row key={r.title} title={r.title} url={r.url} />;
         })}
       </Grid>
     </>

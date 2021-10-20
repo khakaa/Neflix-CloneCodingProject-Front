@@ -1,7 +1,7 @@
 import React from "react";
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
-import { apis } from "../../lib/api";
+import { apis } from "../../lib/apis";
 // import getToken from "../../shared/Token";
 
 // 액션타입생성(리듀서 작성시 재사용되기 때문에 액션타입을 지정하는것임)
