@@ -1,31 +1,48 @@
 import React from "react";
 import styled from "styled-components";
-
 import ContentThumbnail from "./ContentThumbnail";
+
+import { apis } from "../lib/apis";
+
 const Row = (props) => {
-  const { sectionTitle, fetchUrl, fetchUrlTMDB, Poster } = props;
+  const { Poster, title, url } = props;
+
+  const [movies, setMovies] = React.useState([]);
+
+  React.useEffect(() => {
+    async function fetchData() {
+      const res = await apis.getCategoryMovie(url);
+      setMovies(res.data.dataList);
+    }
+
+    fetchData();
+  }, []);
 
   return (
     <React.Fragment>
       <RowContainer>
-        <STText>{sectionTitle}</STText>
-        <ImgWrap>
-          <ContentThumbnail></ContentThumbnail>
-          <ContentThumbnail></ContentThumbnail>
-          <ContentThumbnail></ContentThumbnail>
-          <ContentThumbnail></ContentThumbnail>
-          <ContentThumbnail></ContentThumbnail>
-          <ContentThumbnail></ContentThumbnail>
-          <ContentThumbnail></ContentThumbnail>
-        </ImgWrap>
+        <STText>{title}</STText>
+        {movies.map((m) => {
+          return (
+            <ImgWrap>
+              <ContentThumbnail
+                overview={m.overview}
+                firstDate={m.first_data}
+                grade={m.grade}
+                posterPath={m.posterPath}
+                youtubePath={m.youtubePath}
+              ></ContentThumbnail>
+            </ImgWrap>
+          );
+        })}
       </RowContainer>
     </React.Fragment>
   );
 };
 
-Row.defaultProps = {
-  sectionTitle: "Genre",
-};
+// Row.defaultProps = {
+//   sectionTitle: "Genre",
+// };
 
 const STText = styled.span`
   background-color: black;

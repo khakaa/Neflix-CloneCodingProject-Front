@@ -1,36 +1,36 @@
 import React from "react";
 import Row from "../components/Row";
-import Modal from "../components/Modal";
 import styled from "styled-components";
 
+import { request } from "../shared/request";
+
 const Movies = () => {
-  const [visible, setVisible] = React.useState(false); // 모달의 상태 변경
-
-  const showModal = () => {
-    setVisible(true);
-  };
-
-  const closeModal = () => {
-    setVisible(false);
-  };
   return (
-    <div>
+    <>
       <GenreNav>
         <div>영화</div>
         <div>토글</div>
       </GenreNav>
-      <div>
-        <Row showModal={showModal} visible={visible} closeModal={closeModal} />
-        <Row showModal={showModal} visible={visible} closeModal={closeModal} />
-        <Row showModal={showModal} visible={visible} closeModal={closeModal} />
-        <Row showModal={showModal} visible={visible} closeModal={closeModal} />
-      </div>
-    </div>
+
+      <Grid>
+        {request.map((req) => {
+          return <Row title={req.title} url={req.url} />;
+        })}
+      </Grid>
+    </>
   );
 };
 
 const GenreNav = styled.div`
   padding-top: 100px;
+`;
+
+const Grid = styled.div`
+  width: auto;
+  height: auto;
+  background-color: black;
+  overflow-y: auto;
+  margin: 3vw 0;
 `;
 
 export default Movies;

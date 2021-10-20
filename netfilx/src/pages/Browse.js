@@ -17,22 +17,9 @@ const Browse = (props) => {
 
         <Grid>
           <Row />
-
-          {/* <Row
-            showModal={showModal}
-            visible={visible}
-            closeModal={closeModal}
-          />
-          <Row
-            showModal={showModal}
-            visible={visible}
-            closeModal={closeModal}
-          />
-          <Row
-            showModal={showModal}
-            visible={visible}
-            closeModal={closeModal}
-          /> */}
+          <Row />
+          <Row />
+          <Row />
         </Grid>
       </Wrap>
     </React.Fragment>
@@ -103,9 +90,5 @@ const BannerImg = styled.div`
   height: 600px;
   background-color: black;
 `;
-
-/* const Row = styled.div`
-  margin: 2rem;
-`; */
 
 export default Browse;
