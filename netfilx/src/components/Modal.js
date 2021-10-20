@@ -32,7 +32,7 @@ const Modal = (props) => {
                 </Overview>
                 <Text>
                   <GrayText>장르 : </GrayText>
-                  {genre}
+                  {genre.join(", ")}
                 </Text>
                 <Text>
                   <GrayText>개봉일 :</GrayText>
