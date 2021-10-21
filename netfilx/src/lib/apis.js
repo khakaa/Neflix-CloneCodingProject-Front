@@ -5,6 +5,6 @@ const instance = axios.create({
 });
 
 export const apis = {
-  getMainMovie: () => instance.get("/video?largeCategory=drama"),
+  getMainMovie: () => instance.get("/video/tv_show"),
   getCategoryMovie: (url) => instance.get(url),
 };

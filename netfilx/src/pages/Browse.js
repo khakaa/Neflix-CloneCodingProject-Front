@@ -58,6 +58,7 @@ const Grid = styled.div`
   background-color: black;
   overflow-y: auto;
   margin: 3vw 3vw;
+  display: flex;
 `;
 
 const BtnWrap = styled.div`

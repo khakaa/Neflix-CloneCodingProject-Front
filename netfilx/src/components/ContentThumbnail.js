@@ -41,9 +41,8 @@ const ContentThumbnail = (props) => {
   // if (youtubePath === null) {
   return (
     <>
-      <div>
-        <ThumbnailImg onClick={showModal} src={backdrop_path} />
-      </div>
+      <ThumbnailImg onClick={showModal} src={backdrop_path} />
+
       <Modal
         visible={visible}
         closeModal={closeModal}
@@ -85,8 +84,6 @@ const ContentThumbnail = (props) => {
 
 const ThumbnailImg = styled.img`
   display: flex;
-  overflow-y: hidden;
-  overflow-x: scroll;
   height: 100%;
   width: 240px;
   padding: 0px 2px;
