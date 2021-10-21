@@ -9,9 +9,11 @@ import banner from "../shared/img/netflix-banner.jpeg";
 const Browse = (props) => {
   const dispatch = useDispatch();
   const { history } = props;
-  // const card_list = useSelector((state) => state);
-  // console.log(card_list);
-
+  const card_list = useSelector((state) => state.browse.list);
+  console.log(card_list);
+  useEffect(() => {
+    dispatch(cardCreators.setMovieDB());
+  }, []);
   return (
     <React.Fragment>
       <Wrap>
@@ -56,6 +58,7 @@ const Grid = styled.div`
   background-color: black;
   overflow-y: auto;
   margin: 3vw 3vw;
+  display: flex;
 `;
 
 const BtnWrap = styled.div`
@@ -110,5 +113,9 @@ const BannerImg = styled.div`
   height: 600px;
   background-color: black;
 `;
+
+/* const Row = styled.div`
+  margin: 2rem;
+`; */
 
 export default Browse;

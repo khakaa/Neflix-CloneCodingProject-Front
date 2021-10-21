@@ -8,14 +8,8 @@ import ContentThumbnail from "./ContentThumbnail";
 const BrowseRow = (props) => {
   const dispatch = useDispatch();
   const { history } = props;
-  const large_category = useSelector(
-    (state) => state.browse.data.largeCategory
-  );
-  const state = useSelector((state) => state.browse);
-  console.log(state);
-  const moviecard_row = useSelector((state) => state.browse.data.datainfo);
-  console.log(large_category);
-  console.log(moviecard_row);
+  const moviecard_list = useSelector((state) => state.browse.list);
+
   useEffect(() => {
     dispatch(cardCreators.setMovieDB());
   }, []);
@@ -23,14 +17,16 @@ const BrowseRow = (props) => {
   return (
     <React.Fragment>
       <RowContainer>
-        {moviecard_row.map((p, idx) => {
+        {moviecard_list.map((moviecard, idx) => {
           return (
-            <>
-              <STText>{large_category}</STText>
-              <ImgWrap key={idx}>
-                <ContentThumbnail key={idx} {...p}></ContentThumbnail>
+            <ScrollWrap>
+              <STText>{moviecard.smallCategory}</STText>
+              <ImgWrap>
+                {moviecard.dataList.map((element) => (
+                  <ContentThumbnail {...element} key={idx}></ContentThumbnail>
+                ))}
               </ImgWrap>
-            </>
+            </ScrollWrap>
           );
         })}
       </RowContainer>
@@ -58,10 +54,9 @@ const STText = styled.span`
 const ImgWrap = styled.div`
   width: 100%;
   display: flex;
-
   padding: 1.2vmin 0 1.2vmin 0;
-  margin: 0 0 3vmin 0;
-  overflow-x: scroll;
+
+  /* overflow-x: scroll;
   overflow-y: none;
   overflow: auto;
   scroll-behavior: smooth;
@@ -78,11 +73,44 @@ const ImgWrap = styled.div`
   ::-webkit-scrollbar-track {
     background-color: transparent;
     border-radius: 10px;
+  } */
+`;
+
+const ScrollWrap = styled.div`
+  width: 100%;
+  overflow-x: scroll;
+  ::-webkit-scrollbar {
+    height: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #ff000080;
+    border-radius: 10px;
+
+    border: 2px solid transparent;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 10px;
   }
 `;
 
 const RowContainer = styled.div`
-  padding: 0 0 0 4%;
+  padding: 0 0 0 1%;
+  width: 100%;
+  overflow-x: scroll;
+  ::-webkit-scrollbar {
+    height: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #ff000080;
+    border-radius: 10px;
+
+    border: 2px solid transparent;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 10px;
+  }
 `;
 
 // const Card = styled.div`
