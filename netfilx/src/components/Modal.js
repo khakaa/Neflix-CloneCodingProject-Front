@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import ReactPlayer from "react-player/youtube";
 
 const Modal = (props) => {
   const {
     visible,
     closeModal,
     overview,
-    firstData,
+    first_date,
     grade,
     genre,
     posterPath,
@@ -20,11 +21,22 @@ const Modal = (props) => {
         <>
           <ModalOverlay onClick={closeModal} />
           <ModalContainer onClick={(e) => e.stopPropagation()}>
-            <Img src={backdrop_path}></Img>
+            {youtubePath ? (
+              <div style={{ width: "100%" }}>
+                <ReactPlayer
+                  url={youtubePath}
+                  muted={true}
+                  controls={true}
+                  playing={true}
+                  width="100%"
+                />
+              </div>
+            ) : (
+              <Img src={backdrop_path} />
+            )}
             <ModalDetail>
               <LinkContainer>
                 <PageLink>공식 홈페이지</PageLink>
-                <PageLink>공식 예고편</PageLink>
               </LinkContainer>
               <TextGrid>
                 <Overview>
@@ -35,8 +47,8 @@ const Modal = (props) => {
                   {genre.join(", ")}
                 </Text>
                 <Text>
-                  <GrayText>개봉일 :</GrayText>
-                  {firstData}
+                  <GrayText>개봉일 : </GrayText>
+                  {first_date}
                 </Text>
 
                 <Text>
@@ -66,36 +78,37 @@ const ModalOverlay = styled.div`
 
 const ModalContainer = styled.div`
   border-radius: 0.4rem;
-  height: 80%;
+  height: 90%;
   overflow-y: scroll;
   position: fixed;
   top: 50%;
   bottom: 50%;
   left: 50%;
   width: 90vw;
-  max-width: 800px;
+  max-width: 1000px;
   z-index: 100000;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: black;
+  -ms-overflow-style: none;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const Img = styled.img`
   width: 100%;
-
-  & > p {
-    padding: 5vw;
-  }
 `;
 
 const ModalDetail = styled.div`
+  background-color: #141414;
   box-sizing: border-box;
   width: 100%;
-  background-color: black;
   color: white;
-  padding: 1.25rem 1.75rem;
+  padding: 32px 48px;
 `;
 
 const LinkContainer = styled.div`

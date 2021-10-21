@@ -6,7 +6,7 @@ const ContentThumbnail = (props) => {
   const {
     title,
     overview,
-    firstDate,
+    first_date,
     grade,
     backdrop_path,
     posterPath,
@@ -34,7 +34,6 @@ const ContentThumbnail = (props) => {
     setVisible(false);
   };
 
-  // if (youtubePath === null) {
   return (
     <>
       <ThumbnailImg onClick={showModal} backdrop_path={backdrop_path}>
@@ -45,34 +44,14 @@ const ContentThumbnail = (props) => {
         closeModal={closeModal}
         posterPath={posterPath}
         backdrop_path={backdrop_path}
+        youtubePath={youtubePath}
         overview={overview}
-        firstData={firstDate}
+        first_date={first_date}
         grade={grade}
         genre={genre}
       />
     </>
   );
-  // }
-
-  // if (youtubePath) {
-  //   return (
-  //     <>
-  //       <ThumbnailVideo
-  //         onClick={showModal}
-  //         src={youtubePath}
-  //         src="https://occ-0-993-325.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABSF78muRZ4z-sgV4tQp8vM1VSE2SnlLYl_ThhQXzxbWPz-008QtjCtSCnoGduPscCSIvEETZ8ovDKC3wzDI-6XcwI-Q.webp?r=916"
-  //       />
-  //       <Modal
-  //         visible={visible}
-  //         closeModal={closeModal}
-  //         overview={overview}
-  //         firstData={firstDate}
-  //         grade={grade}
-  //         youtubePath={youtubePath}
-  //       />
-  //     </>
-  //   );
-  // }
 };
 
 const ThumbnailImg = styled.div`
@@ -106,7 +85,5 @@ const Textarea = styled.div`
   align-items: center;
   bottom: 10%;
 `;
-
-const ThumbnailVideo = styled.video``;
 
 export default ContentThumbnail;
