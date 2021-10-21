@@ -1,14 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-// import { useSelector, useDispatch } from "react-redux";
 import Modal from "./Modal";
 
 const ContentThumbnail = (props) => {
-  // const poster = useSelector(
-  //   (state) => state.browse.data.datainfo[0].dataList[0].backdrop_path
-  // );
-  // console.log(poster);
   const {
+    movieTitle,
     overview,
     firstDate,
     grade,
@@ -41,9 +37,9 @@ const ContentThumbnail = (props) => {
   // if (youtubePath === null) {
   return (
     <>
-      <div>
-        <ThumbnailImg onClick={showModal} src={backDropPath} />
-      </div>
+      <ThumbnailImg onClick={showModal} backDropPath={backDropPath}>
+        <Textarea>{movieTitle} </Textarea>
+      </ThumbnailImg>
       <Modal
         visible={visible}
         closeModal={closeModal}
@@ -61,33 +57,32 @@ const ContentThumbnail = (props) => {
   // if (youtubePath) {
   //   return (
   //     <>
-  //       <Container>
-  //         <ThumbnailVideo
-  //           onClick={showModal}
-  //           src={youtubePath}
-  // src="https://occ-0-993-325.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABSF78muRZ4z-sgV4tQp8vM1VSE2SnlLYl_ThhQXzxbWPz-008QtjCtSCnoGduPscCSIvEETZ8ovDKC3wzDI-6XcwI-Q.webp?r=916"
+  //       <ThumbnailVideo
+  //         onClick={showModal}
+  //         src={youtubePath}
+  //         src="https://occ-0-993-325.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABSF78muRZ4z-sgV4tQp8vM1VSE2SnlLYl_ThhQXzxbWPz-008QtjCtSCnoGduPscCSIvEETZ8ovDKC3wzDI-6XcwI-Q.webp?r=916"
   //       />
-  //     </Container>
-  //     <Modal
-  //       visible={visible}
-  //       closeModal={closeModal}
-  //       overview={overview}
-  //       firstData={firstDate}
-  //       grade={grade}
-  //       youtubePath={youtubePath}
-  //     />
-  //   </>
-  // );
+  //       <Modal
+  //         visible={visible}
+  //         closeModal={closeModal}
+  //         overview={overview}
+  //         firstData={firstDate}
+  //         grade={grade}
+  //         youtubePath={youtubePath}
+  //       />
+  //     </>
+  //   );
   // }
 };
 
-const ThumbnailImg = styled.img`
-  display: flex;
-  overflow-y: hidden;
-  overflow-x: scroll;
-  height: 100%;
-  width: 240px;
-  padding: 0px 2px;
+const ThumbnailImg = styled.div`
+  background-image: url(${(props) => `${props.backDropPath}`});
+  background-size: cover;
+  background-position: center;
+  width: 30vmin;
+  height: 17vmin;
+  margin: 0px 4px;
+  position: relative;
   border-radius: 0.4rem;
   transition: transform 200ms ease-in-out;
 
@@ -97,6 +92,19 @@ const ThumbnailImg = styled.img`
     z-index: 100;
     display: absolute;
   }
+`;
+
+const Textarea = styled.div`
+  color: white;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  font-size: 1.5em;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 10%;
 `;
 
 const ThumbnailVideo = styled.video``;

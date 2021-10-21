@@ -18,8 +18,6 @@ const Row = (props) => {
       //   ? res.data.data.datainfo[0].dataList
       //   : "";
 
-      // const deduplicatedArr = movieArr.filter(())
-
       setMovies(
         res.data.data.datainfo[0].dataList
           ? res.data.data.datainfo[0].dataList
@@ -39,15 +37,19 @@ const Row = (props) => {
         <ImgWrap>
           {movies.map((m) => {
             return (
-              <ContentThumbnail
-                overview={m.overview}
-                firstDate={m.first_date}
-                grade={m.grade}
-                backDropPath={m.backdrop_path}
-                posterPath={m.poster_Path}
-                youtubePath={m.youtubePath}
-                genre={m.genre}
-              ></ContentThumbnail>
+              <div>
+                <ContentThumbnail
+                  key={m.id}
+                  movieTitle={m.title}
+                  overview={m.overview}
+                  firstDate={m.first_date}
+                  grade={m.grade}
+                  backDropPath={m.backdrop_path}
+                  posterPath={m.poster_Path}
+                  youtubePath={m.youtubePath}
+                  genre={m.genre}
+                ></ContentThumbnail>
+              </div>
             );
           })}
         </ImgWrap>
@@ -70,7 +72,6 @@ const STText = styled.span`
 `;
 
 const ImgWrap = styled.div`
-  width: 100%;
   display: flex;
 
   padding: 1.2vmin 0 1.2vmin 0;
