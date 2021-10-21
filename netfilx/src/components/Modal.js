@@ -11,7 +11,7 @@ const Modal = (props) => {
     genre,
     posterPath,
     youtubePath,
-    backDropPath,
+    backdrop_path,
   } = props;
 
   return (
@@ -20,7 +20,7 @@ const Modal = (props) => {
         <>
           <ModalOverlay onClick={closeModal} />
           <ModalContainer onClick={(e) => e.stopPropagation()}>
-            <Img src={backDropPath}></Img>
+            <Img src={backdrop_path}></Img>
             <ModalDetail>
               <LinkContainer>
                 <PageLink>공식 홈페이지</PageLink>
@@ -32,7 +32,7 @@ const Modal = (props) => {
                 </Overview>
                 <Text>
                   <GrayText>장르 : </GrayText>
-                  {genre}
+                  {genre.join(", ")}
                 </Text>
                 <Text>
                   <GrayText>개봉일 :</GrayText>

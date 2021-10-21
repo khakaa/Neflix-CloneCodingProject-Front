@@ -1,19 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import { useSelector, useDispatch } from "react-redux";
-import { actionCreators as cardCreators } from "../redux/modules/browse";
+import { useSelector } from "react-redux";
 
 import ContentThumbnail from "./ContentThumbnail";
 
 const BrowseRow = (props) => {
-  const dispatch = useDispatch();
-  const { history } = props;
   const moviecard_list = useSelector((state) => state.browse.list);
 
-  useEffect(() => {
-    dispatch(cardCreators.setMovieDB());
-  }, []);
-
+  console.log(moviecard_list);
   return (
     <React.Fragment>
       <RowContainer>
@@ -23,7 +17,9 @@ const BrowseRow = (props) => {
               <STText>{moviecard.smallCategory}</STText>
               <ImgWrap>
                 {moviecard.dataList.map((element) => (
-                  <ContentThumbnail {...element} key={idx}></ContentThumbnail>
+                  <div>
+                    <ContentThumbnail {...element} key={idx}></ContentThumbnail>
+                  </div>
                 ))}
               </ImgWrap>
             </ScrollWrap>
@@ -55,30 +51,13 @@ const ImgWrap = styled.div`
   width: 100%;
   display: flex;
   padding: 1.2vmin 0 1.2vmin 0;
-
-  /* overflow-x: scroll;
-  overflow-y: none;
-  overflow: auto;
-  scroll-behavior: smooth;
-
-  ::-webkit-scrollbar {
-    height: 5px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #ff000080;
-    border-radius: 10px;
-
-    border: 2px solid transparent;
-  }
-  ::-webkit-scrollbar-track {
-    background-color: transparent;
-    border-radius: 10px;
-  } */
 `;
 
 const ScrollWrap = styled.div`
   width: 100%;
   overflow-x: scroll;
+  margin: 0 0 3vmin 0;
+
   ::-webkit-scrollbar {
     height: 5px;
   }
