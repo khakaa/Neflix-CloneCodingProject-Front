@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
+
 import { actionCreators as cardCreators } from "../redux/modules/browse";
 
 import BrowseRow from "../components/BrowseRow";
@@ -9,11 +10,12 @@ import banner from "../shared/img/netflix-banner.jpeg";
 const Browse = (props) => {
   const dispatch = useDispatch();
   const { history } = props;
-  const card_list = useSelector((state) => state.browse.list);
-  console.log(card_list);
+  const movieGenre_list = useSelector((state) => state.browse.list);
+
   useEffect(() => {
     dispatch(cardCreators.setMovieDB());
   }, []);
+
   return (
     <React.Fragment>
       <Wrap>
@@ -25,23 +27,14 @@ const Browse = (props) => {
         </BannerImg>
 
         <Grid>
-          <BrowseRow />
-
-          {/* <Row
-            showModal={showModal}
-            visible={visible}
-            closeModal={closeModal}
-          />
-          <Row
-            showModal={showModal}
-            visible={visible}
-            closeModal={closeModal}
-          />
-          <Row
-            showModal={showModal}
-            visible={visible}
-            closeModal={closeModal}
-          /> */}
+          {movieGenre_list.map((movieGenre, idx) => {
+            return (
+              <>
+                <STText>{movieGenre.smallCategory}</STText>
+                <BrowseRow />
+              </>
+            );
+          })}
         </Grid>
       </Wrap>
     </React.Fragment>
@@ -113,6 +106,18 @@ const BannerImg = styled.div`
   background-color: black;
 `;
 
+const STText = styled.span`
+  background-color: black;
+  color: #fff;
+  font-weight: 800;
+  font-size: 3vmin;
+  opacity: 0.85;
+  letter-spacing: -1px;
+  transition: 150ms ease-in-out;
+  :hover {
+    opacity: 1;
+  }
+`;
 /* const Row = styled.div`
   margin: 2rem;
 `; */

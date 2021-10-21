@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
+
 import { actionCreators as cardCreators } from "../redux/modules/browse";
 
 import ContentThumbnail from "./ContentThumbnail";
@@ -8,29 +9,29 @@ import ContentThumbnail from "./ContentThumbnail";
 const BrowseRow = (props) => {
   const dispatch = useDispatch();
   const { history } = props;
-  const moviecard_list = useSelector((state) => state.browse.list);
+  const movieGenre_list = useSelector((state) => state.browse.list);
 
   useEffect(() => {
     dispatch(cardCreators.setMovieDB());
   }, []);
 
   return (
-    <React.Fragment>
-      <RowContainer>
-        {moviecard_list.map((moviecard, idx) => {
+    <RowContainer>
+      <ImgWrap>
+        {movieGenre_list.map((movieGenre, idx) => {
           return (
             <>
-              <STText>{moviecard.smallCategory}</STText>
-              {moviecard.dataList.map((element) => (
-                <ImgWrap key={idx}>
-                  <ContentThumbnail {...element} key={idx}></ContentThumbnail>
-                </ImgWrap>
+              {movieGenre.dataList.map((element) => (
+                <ContentThumbnail
+                  {...element}
+                  key={movieGenre.smallCategory}
+                ></ContentThumbnail>
               ))}
             </>
           );
         })}
-      </RowContainer>
-    </React.Fragment>
+      </ImgWrap>
+    </RowContainer>
   );
 };
 
@@ -38,23 +39,9 @@ BrowseRow.defaultProps = {
   sectionTitle: "Genre",
 };
 
-const STText = styled.span`
-  background-color: black;
-  color: #fff;
-  font-weight: 800;
-  font-size: 3vmin;
-  opacity: 0.85;
-  letter-spacing: -1px;
-  transition: 150ms ease-in-out;
-  :hover {
-    opacity: 1;
-  }
-`;
-
 const ImgWrap = styled.div`
   width: 100%;
   display: flex;
-
   padding: 1.2vmin 0 1.2vmin 0;
   margin: 0 0 3vmin 0;
   overflow-x: scroll;
