@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import ReactPlayer from "react-player/youtube";
 
 const Modal = (props) => {
@@ -16,7 +16,7 @@ const Modal = (props) => {
   } = props;
 
   return (
-    <>
+    <div className={visible ? "openModal" : "closeModal"}>
       {visible ? (
         <>
           <ModalOverlay onClick={closeModal} />
@@ -61,9 +61,30 @@ const Modal = (props) => {
           </ModalContainer>
         </>
       ) : null}
-    </>
+    </div>
   );
 };
+
+const modalBgShow = keyframes`
+  from {
+    opacity : 0;
+  }
+  to {
+    opacity : 0.8;
+  }
+`;
+
+const modalShow = keyframes`
+  from {
+    opacity : 0;
+    margin-top :-50px;
+  }
+  to {
+    opacity : 1;
+    margin-top : 0;
+
+  }
+`;
 
 const ModalOverlay = styled.div`
   width: 100%;
@@ -74,11 +95,12 @@ const ModalOverlay = styled.div`
   bottom: 0;
   z-index: 20;
   background-color: black;
+  animation: ${modalBgShow} 0.5s;
 `;
 
 const ModalContainer = styled.div`
   border-radius: 0.4rem;
-  height: 90%;
+  height: fit-content;
   overflow-y: scroll;
   position: fixed;
   top: 50%;
@@ -93,6 +115,7 @@ const ModalContainer = styled.div`
   align-items: center;
   background-color: black;
   -ms-overflow-style: none;
+  animation: ${modalShow} 0.5s;
 
   ::-webkit-scrollbar {
     display: none;
