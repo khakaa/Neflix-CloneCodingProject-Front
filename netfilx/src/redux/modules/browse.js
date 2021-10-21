@@ -16,6 +16,7 @@ const setMovie = createAction(SET_MOVIE, (moviecard_list) => ({
 
 //초기상태값 //무비카드하나에 들어가야할 기본내용
 const initialState = {
+  list: [],
   data: {
     largeCategory: "영화",
     datainfo: [
@@ -273,6 +274,7 @@ export default handleActions(
 
         console.log(action.payload.moviecard_list);
         draft.list = action.payload.moviecard_list;
+
         // 새 배열에서 푸시를 하게되면 데이터 중복으로 계속 불러와지게됨.
         // draft.list.push(...action.payload.post_list.postings);
 

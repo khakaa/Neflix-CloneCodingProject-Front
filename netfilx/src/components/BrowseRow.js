@@ -8,14 +8,8 @@ import ContentThumbnail from "./ContentThumbnail";
 const BrowseRow = (props) => {
   const dispatch = useDispatch();
   const { history } = props;
-  const large_category = useSelector(
-    (state) => state.browse.data.largeCategory
-  );
-  const state = useSelector((state) => state.browse);
-  console.log(state);
-  const moviecard_row = useSelector((state) => state.browse.data.datainfo);
-  console.log(large_category);
-  console.log(moviecard_row);
+  const moviecard_list = useSelector((state) => state.browse.list);
+
   useEffect(() => {
     dispatch(cardCreators.setMovieDB());
   }, []);
@@ -23,13 +17,15 @@ const BrowseRow = (props) => {
   return (
     <React.Fragment>
       <RowContainer>
-        {moviecard_row.map((p, idx) => {
+        {moviecard_list.map((moviecard, idx) => {
           return (
             <>
-              <STText>{large_category}</STText>
-              <ImgWrap key={idx}>
-                <ContentThumbnail key={idx} {...p}></ContentThumbnail>
-              </ImgWrap>
+              <STText>{moviecard.smallCategory}</STText>
+              {moviecard.dataList.map((element) => (
+                <ImgWrap key={idx}>
+                  <ContentThumbnail {...element} key={idx}></ContentThumbnail>
+                </ImgWrap>
+              ))}
             </>
           );
         })}

@@ -12,7 +12,7 @@ const ContentThumbnail = (props) => {
     overview,
     firstDate,
     grade,
-    backDropPath,
+    backdrop_path,
     posterPath,
     youtubePath,
     genre,
@@ -41,20 +41,18 @@ const ContentThumbnail = (props) => {
   // if (youtubePath === null) {
   return (
     <>
-
       <div>
-        <ThumbnailImg onClick={showModal} src={backDropPath} />
+        <ThumbnailImg onClick={showModal} src={backdrop_path} />
       </div>
       <Modal
         visible={visible}
         closeModal={closeModal}
         posterPath={posterPath}
-        backDropPath={backDropPath}
+        backDropPath={backdrop_path}
         overview={overview}
         firstData={firstDate}
         grade={grade}
         genre={genre}
-
       />
     </>
   );
