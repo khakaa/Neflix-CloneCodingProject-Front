@@ -87,5 +87,8 @@ const Text = styled.div`
 
 const IMG = styled.img`
   max-width: 160px;
+  :hover {
+    cursor: pointer;
+  }
 `;
 export default Header;

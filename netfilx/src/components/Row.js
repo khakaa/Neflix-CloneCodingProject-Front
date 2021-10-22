@@ -42,7 +42,7 @@ const Row = (props) => {
                   key={m.id}
                   title={m.title}
                   overview={m.overview}
-                  firstDate={m.first_date}
+                  first_date={m.first_date}
                   grade={m.grade}
                   backdrop_path={m.backdrop_path}
                   posterPath={m.poster_Path}
