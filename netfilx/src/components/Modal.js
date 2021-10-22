@@ -10,7 +10,7 @@ const Modal = (props) => {
     first_date,
     grade,
     genre,
-    posterPath,
+    homepage,
     youtubePath,
     backdrop_path,
   } = props;
@@ -36,7 +36,13 @@ const Modal = (props) => {
             )}
             <ModalDetail>
               <LinkContainer>
-                <PageLink>공식 홈페이지</PageLink>
+                {homepage ? (
+                  <PageLink href={homepage} target="_blank">
+                    공식 홈페이지
+                  </PageLink>
+                ) : (
+                  ""
+                )}
               </LinkContainer>
               <TextGrid>
                 <Overview>
@@ -147,12 +153,20 @@ const TextGrid = styled.div`
 `;
 
 const PageLink = styled.a`
+  color: white;
+
   text-decoration: none;
   margin: 0 2rem 0 0;
 
   &:hover {
+    color: white;
+
     text-decoration: underline;
     cursor: pointer;
+  }
+  &:visited {
+    color: white;
+    text-decoration: none;
   }
 `;
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { actionCreators as cardCreators } from "../redux/modules/browse";
 
 import BrowseRow from "../components/BrowseRow";
@@ -8,14 +8,11 @@ import banner from "../shared/img/netflix-banner.jpeg";
 
 const Browse = (props) => {
   const dispatch = useDispatch();
-  const { history } = props;
-  const card_list = useSelector((state) => state.browse.list);
-  console.log(card_list);
 
   useEffect(() => {
     dispatch(cardCreators.setMovieDB());
   }, []);
-  
+
   return (
     <React.Fragment>
       <Wrap>
@@ -28,22 +25,6 @@ const Browse = (props) => {
 
         <Grid>
           <BrowseRow />
-
-          {/* <Row
-            showModal={showModal}
-            visible={visible}
-            closeModal={closeModal}
-          />
-          <Row
-            showModal={showModal}
-            visible={visible}
-            closeModal={closeModal}
-          />
-          <Row
-            showModal={showModal}
-            visible={visible}
-            closeModal={closeModal}
-          /> */}
         </Grid>
       </Wrap>
     </React.Fragment>

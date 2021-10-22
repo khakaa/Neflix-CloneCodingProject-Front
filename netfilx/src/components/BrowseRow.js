@@ -7,18 +7,20 @@ import ContentThumbnail from "./ContentThumbnail";
 const BrowseRow = (props) => {
   const moviecard_list = useSelector((state) => state.browse.list);
 
-  console.log(moviecard_list);
   return (
     <React.Fragment>
       <RowContainer>
         {moviecard_list.map((moviecard, idx) => {
           return (
             <ScrollWrap>
-              <STText>{moviecard.smallCategory}</STText>
+              <STText key={moviecard.idx}>{moviecard.smallCategory}</STText>
               <ImgWrap>
-                {moviecard.dataList.map((element) => (
+                {moviecard.dataList.map((element, idx) => (
                   <div>
-                    <ContentThumbnail {...element} key={idx}></ContentThumbnail>
+                    <ContentThumbnail
+                      {...element}
+                      key={element.idx}
+                    ></ContentThumbnail>
                   </div>
                 ))}
               </ImgWrap>

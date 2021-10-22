@@ -7,16 +7,12 @@ import { apis } from "../lib/apis";
 
 const Row = (props) => {
   const { title, url } = props;
-  // console.log(props);
+
   const [movies, setMovies] = useState([]);
 
   React.useEffect(() => {
     async function fetchData() {
       const res = await apis.getCategoryMovie(url);
-      // console.log(res.data.data.datainfo[0].dataList);
-      // const movieArr = res.data.data.datainfo[0].dataList
-      //   ? res.data.data.datainfo[0].dataList
-      //   : "";
 
       setMovies(
         res.data.data.datainfo[0].dataList
@@ -28,8 +24,6 @@ const Row = (props) => {
     fetchData();
   }, []);
 
-  console.log(movies);
-
   return (
     <React.Fragment>
       <RowContainer>
@@ -40,6 +34,7 @@ const Row = (props) => {
               <div>
                 <ContentThumbnail
                   key={m.id}
+                  homepage={m.homepage}
                   title={m.title}
                   overview={m.overview}
                   first_date={m.first_date}

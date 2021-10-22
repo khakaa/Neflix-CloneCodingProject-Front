@@ -6,6 +6,7 @@ const ContentThumbnail = (props) => {
   const {
     title,
     overview,
+    homepage,
     first_date,
     grade,
     backdrop_path,
@@ -46,6 +47,7 @@ const ContentThumbnail = (props) => {
         backdrop_path={backdrop_path}
         youtubePath={youtubePath}
         overview={overview}
+        homepage={homepage}
         first_date={first_date}
         grade={grade}
         genre={genre}
