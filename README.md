@@ -12,11 +12,13 @@ The Movie DB에서 제공받은 Open API를 사용하였습니다.
   - BE(Spring) : 박기남, 김선겸
 
 ## 🔨 2. 스택
-* React
-* JavaScript
-* JSX
-* CSS
-* Styled Component
+* `React`
+* `Redux`
+* `JavaScript`
+* `JSX`
+* `CSS`
+* `Styled Component`
+* `Axios`
 
 ## 🖥 3. API 설계
 [API 설계](https://bejewled-paradox-cb7.notion.site/16a999bbf52942d48c2092fc1535a28e?v=55e53c73af19457f8cf0df4cce430a5c)
